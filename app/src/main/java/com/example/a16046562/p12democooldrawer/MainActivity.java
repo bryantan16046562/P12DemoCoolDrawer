@@ -1,4 +1,5 @@
 package com.example.a16046562.p12democooldrawer;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 public class MainActivity extends AppCompatActivity {
     private String[] drawerItems;
@@ -23,10 +25,23 @@ public class MainActivity extends AppCompatActivity {
 
     private ActionBarDrawerToggle drawerToggle;
 
+    Button btnNewActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        btnNewActivity = (Button)
+                findViewById(R.id.btnNewActivity);
+
+        btnNewActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, NewActivity.class);
+                startActivity(i);
+            }
+        });
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.left_drawer);
 
